@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h3>污染列表</h3>
+    <ul id="aqi-list">
+
+    </ul>
+    <script type="text/javascript">
+        var aqiData=[["北京", 90],
+            ["上海", 50],
+            ["福州", 10],
+            ["广州", 50],
+            ["成都", 80],
+            ["西安", 100]];
+        (function () {
+            /*
+             在注释下方编写代码
+             遍历读取aqiData中各个城市的数据
+             将空气质量指数大于60的城市显示到aqi-list的列表中
+             */
+            aqiData.sort(function (a,b) {
+                return (+b[1])-(+a[1]);
+            });
+            var rank=0;
+            var chineseNumbers = ["一","二","三","四","五","六","七","八","九","十"];
+            var root=document.getElementById("aqi-list");
+            aqiData.forEach(function (d) {
+                if(+d[1]<=60)return ;
+                var li=document.createElement('li');
+                //li.innerText=d[0]+","+d[1];
+                li.appendChild(document.createTextNode("第"+chineseNumbers[rank]+"名 "+d[0]+","+d[1]));
+                root.appendChild(li);
+                rank++;
+            })
+
+            // improve
+            var context="";
+            aqiData.filter(function (element) {return element[1]>60;})
+                    .sort(function (a,b) {return (+b[1])-(+a[1]);})
+                    .forEach(function (element,index) {
+                        context+="<li>第" + chineseNumbers[index] + "名：" + element[0] + "，" + element[1] + "</li>";
+                    })
+            root.innerHTML=context;
+        })();
+    </script>
+</body>
+</html>
