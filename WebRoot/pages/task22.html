@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 22</title>
+    <style>
+        #root_wrapper{
+            padding: 10px;
+
+            display: -webkit-flex;
+            display: flex;
+            width:800px;
+            height:400px;
+            justify-content: space-between;
+            border:2px darkblue solid;
+            margin:10px auto;
+        }
+        .child_1{
+            display: -webkit-flex;
+            display:flex;
+            justify-content: space-between;
+            /*flex-direction: column;*/
+            width:50%;
+            padding: 10px;
+            margin:5px;
+            border: 2px red solid ;
+        }
+        .child_2{
+            width:50%;
+            margin:5px;
+            display: -webkit-flex;
+            display: flex;
+            justify-content: space-between;
+            border: 2px  #000 solid;
+        }
+        .control button{
+            width:40px;
+        }
+        .control{
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div id="root_wrapper">
+            <div class="child_1">
+                <div class="child_2"></div>
+                <div class="child_2"></div>
+            </div>
+            <div class="child_1">
+                <div class="child_2"></div>
+                <div class="child_2"></div>
+            </div>
+        </div>
+        <div class="control">
+            <button id="preBtn">前序</button>
+            <button id="inBtn">中序</button>
+            <button id="posBtn">后序</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/task22.js"></script>
+</body>
+</html>
