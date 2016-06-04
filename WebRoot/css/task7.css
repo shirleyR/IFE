@@ -1,0 +1,158 @@
+body{
+    margin:0;
+    padding:0;
+}
+
+
+nav{
+    background: #ffaaaa;
+    height:50px;
+}
+nav ul {
+   list-style: none;
+    margin: 0;
+    float: right;
+}
+nav ul li{
+    display: inline-block;
+    line-height:50px;
+    margin-right:20px ;
+}
+
+nav ul li a,nav .logo a{
+    line-height:50px;
+    text-decoration: none;
+    display: inline-block;
+    height:inherit;
+}
+#banner{
+    text-align: center;
+    padding-top:300px;
+    width:100%;
+    min-width: 1080px;
+    position: relative;
+    height:600px;
+}
+#banner .inner{
+    margin-left:200px ;
+
+    text-align: left;
+}
+#banner .inner p{
+    max-width:300px;
+    line-height: 30px;
+}
+
+#banner button{
+    margin-top:20px ;
+    border: none;
+    background: #faa;
+    color:#fff;
+    font-size:20px;
+    font-weight: bold;
+    line-height:40px;
+    padding: 0px 100px 0px 100px;
+}
+
+nav .logo{
+    float: left;
+    padding-left:10px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+#banner .icon-group .icon{
+    display: inline-block;
+    width:25%;
+    min-width:100px;
+    height:100px;
+    background: #fff;
+    text-align: center;
+    /*margin: 10px auto;*/
+}
+.wrapper .icon{
+    float: left;
+    width:25%;
+    padding: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing:border-box;
+
+}
+#banner .subinner{
+
+
+    bottom:0;
+}
+
+.wrapper{
+    margin: 0 auto;
+    min-width:1080px;
+    width:100%;
+    height:300px;
+    position: relative;
+    text-align: center;
+}
+#one img{
+
+}
+.clearfix{
+    content:'';
+    display: block;
+    clear:both;
+}
+#two ul{
+    list-style: none;
+    margin: 100px auto;
+}
+#two ul li{
+    display: inline-block;
+    margin-right:20px;
+    line-height:50px;
+    width:200px;
+    font-size: 20px;
+}
+#two ul li select{
+    height: 30px;
+    width: inherit;
+}
+#two ul li button {
+    background: rgba(230, 84, 84, 0.98);
+    width: inherit;
+    border: none;
+    font-size: 20px;
+    height: 30px;
+    text-align: center;
+    letter-spacing: 20px;
+    padding: 0px 10px 0px 20px;
+    color: #fff;
+}
+
+#four .wrapper >div{
+    float:left;
+}
+
+
+#four .wrapper .img-section{
+    width:55%;
+    background: #009900;
+
+}
+#four .text-section{
+    width:40%;
+}
+.wrapper .more{
+    width:33.3%;
+    height: inherit;
+    text-align: center;
+    float: left;
+}
+.more .subinner{
+    width: 100px;
+    background: #009900;
+}
+.more img{
+    width: 100%;
+}
