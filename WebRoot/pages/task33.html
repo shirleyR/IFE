@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            margin:10px;
+        }
+        .com{
+            margin-left:120px;
+            width:600px;
+        }
+        div>button{
+            border:1px solid;
+            height:30px;
+
+            border-radius:5px;
+        }
+        input{
+            width:200px;
+            height:30px;
+            font-size:20px;
+            border-radius:5px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <canvas id="canvas" width="600" height="600"></canvas>
+</div>
+<div class="com">
+    <input type="text" id="command" name="command">
+    <button id="btn">执行</button>
+</div>
+<script>
+    var canvas=document.getElementById("canvas");
+    var context=canvas.getContext("2d");
+    function  windowToCanvas(canvas,x,y) {
+        var bbox=canvas.getBoundingClientRect();
+        return {
+            x:(x-bbox.left)*(canvas.width/bbox.width),
+            y:(y-bbox.top)*(canvas.height/bbox.height)
+        };
+    }
+    //drawLine(context,30,canvas.width-30,'green');
+    drawBone();
+    function drawBone() {
+        context.beginPath();
+        context.lineWidth=2;
+        context.moveTo(50,50);
+        context.lineTo(50,550);
+        context.strokeStyle="#000";
+        context.stroke();
+
+        context.beginPath();
+        context.lineWidth=2;
+        context.moveTo(50,550);
+        context.lineTo(550,550);
+        context.strokeStyle="#000";
+        context.stroke();
+
+        for(var i=0;i<10;i++){
+            context.beginPath();
+            context.lineWidth=0.5;
+            context.moveTo(100+i*50,50);
+            context.lineTo(100+i*50,550);
+            context.strokeStyle = "#000";
+            context.stroke();
+            // 绘制x坐标轴刻度值
+            context.font = "20px Arial";
+            context.fillStyle = "#000";
+            context.fillText(i+1, 70 + i * 50, 30);
+        }
+        context.beginPath();
+        context.lineWidth=2;
+        context.moveTo(50,50);
+        context.lineTo(550,50);
+        context.strokeStyle = "#000";
+        context.stroke();
+        context.beginPath();
+        context.lineWidth=2;
+        context.moveTo(550,50);
+        context.lineTo(550,550);
+        context.strokeStyle = "#000";
+        context.stroke();
+        for(var i=0;i<10;i++){
+            context.beginPath();
+            context.lineWidth=0.5;
+            context.moveTo(50,100+i*50);
+            context.lineTo(550,100+i*50);
+            context.strokeStyle = "#000";
+            context.stroke();
+            // 绘制x坐标轴刻度值
+            context.font = "20px Arial";
+            context.fillStyle = "#000";
+            context.fillText(i+1, 20,70 + i * 50);
+        }
+    }
+    var input=document.querySelector("#command");
+    var btn=document.querySelector("#btn");
+    btn.onclick=function () {
+        var value=input.value.trim();
+        if(value.toLocaleLowerCase()==='go'){
+            clear();
+            GO();
+
+            render();
+        }else if(value.toLocaleLowerCase()==="tun lef"){
+            state.dir=Math.floor(((state.dir-1)%4+4)%4);
+            render();
+
+        }else if(value.toLocaleLowerCase()==='tun rig'){
+            state.dir=Math.floor((state.dir+1)%4);
+            render();
+        }else if(value.toLocaleLowerCase()==='tun bac'){
+            state.dir=Math.floor((state.dir+2)%4);
+            render();
+        }
+    }
+    var state={
+        x:0,
+        y:0,
+        dir:2
+    }
+    render();
+    // four direction : 0 left 2 right 1 up 3 down
+    function GO() {
+        if(state.dir==0){
+            if(state.x>0){
+                state.x--;
+            }
+        }
+        if(state.dir==2){
+            if(state.x<9){
+                state.x++;
+            }
+        }
+        if(state.dir==1){
+            if(state.y>0){
+                state.y--;
+            }
+        }
+        if(state.dir==3){
+            if(state.y<9){
+                state.y++;
+            }
+        }
+        
+    }
+    function clear() {
+        context.fillStyle="white";
+        context.fillRect(state.x*50+50,state.y*50+50,50,50)
+        context.strokeStyle="#000";
+
+        context.strokeRect(state.x*50+50,state.y*50+50,50,50);
+    }
+    function render() {
+        context.fillStyle="red";
+        context.fillRect(state.x*50+50,state.y*50+50,50,50)// x,y width height
+     //   context.strokeRect(state.x*50+50,state.y*50+50,50,50)
+        var x,y,width,height;
+        if(state.dir==0) {
+            x = state.x * 50 + 50;
+            y = state.y * 50 + 50;
+            width = 20;
+            height = 50;
+        }
+        if(state.dir==2) {
+            x = state.x * 50 + 80;
+            y = state.y * 50 + 50;
+            width = 20;
+            height = 50;
+        }
+        if(state.dir==1) {
+            x = state.x * 50 + 50;
+            y = state.y * 50 + 50;
+            width = 50;
+            height = 20;
+        }
+        if(state.dir==3) {
+            x = state.x * 50 + 50;
+            y = state.y * 50 + 80;
+            width = 50;
+            height = 20;
+        }
+
+            context.fillStyle="blue";
+            context.fillRect(x,y ,width ,height)// x,y width height
+        //    context.strokeRect(x,y, width ,height)
+
+    }
+
+</script>
+</body>
+</html>
